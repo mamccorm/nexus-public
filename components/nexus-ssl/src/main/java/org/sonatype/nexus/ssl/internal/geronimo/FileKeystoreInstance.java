@@ -200,6 +200,12 @@ public class FileKeystoreInstance
     catch (CertificateEncodingException e) {
       throw new KeystoreException("Unable to generate key pair in keystore '" + keystoreName + "'", e);
     }
+    catch (CertificateException e) {
+      throw new KeystoreException("Unable to generate key pair in keystore '" + keystoreName + "'", e);
+    }
+    catch (OperatorCreationException e) {
+      throw new KeystoreException("Unable to generate key pair in keystore '" + keystoreName + "'", e);
+    }
     saveKeystore(storePassword);
   }
 
@@ -422,7 +428,8 @@ public class FileKeystoreInstance
   private X509Certificate generateCertificate(PublicKey publicKey, PrivateKey privateKey, String algorithm,
                                               int validity, String commonName, String orgUnit, String organization,
                                               String locality, String state, String country)
-      throws SignatureException, InvalidKeyException, NoSuchAlgorithmException, CertificateEncodingException
+      throws SignatureException, InvalidKeyException, NoSuchAlgorithmException, CertificateEncodingException,
+             CertificateException, OperatorCreationException
   {
     return CertificateUtil.generateCertificate(publicKey, privateKey, algorithm,
         validity, commonName, orgUnit, organization, locality, state,

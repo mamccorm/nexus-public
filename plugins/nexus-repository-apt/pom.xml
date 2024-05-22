@@ -86,12 +86,14 @@
 
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk15to18</artifactId>
+      <artifactId>bc-fips</artifactId>
+      <version>1.0.2.3</version>
     </dependency>
 
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcpg-jdk15to18</artifactId>
+      <artifactId>bctls-fips</artifactId>
+      <version>1.0.12</version>
     </dependency>
 
     <dependency>

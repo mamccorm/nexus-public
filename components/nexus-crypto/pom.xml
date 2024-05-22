@@ -27,6 +27,12 @@
   <name>${project.groupId}:${project.artifactId}</name>
   <packaging>bundle</packaging>
 
+  <properties>
+    <bcfips.version>1.0.2.4</bcfips.version>
+    <bcpkix.version>1.0.7</bcpkix.version>
+    <bctls.version>1.0.18</bctls.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.sonatype.nexus</groupId>
@@ -35,22 +41,20 @@
 
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk15to18</artifactId>
+      <artifactId>bc-fips</artifactId>
+      <version>${bcfips.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcpg-jdk15to18</artifactId>
+      <artifactId>bcpkix-fips</artifactId>
+      <version>${bcpkix.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcpkix-jdk15to18</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcutil-jdk15to18</artifactId>
+      <artifactId>bctls-fips</artifactId>
+      <version>${bctls.version}</version>
     </dependency>
 
     <dependency>

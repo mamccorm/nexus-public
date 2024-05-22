@@ -35,7 +35,7 @@ import javax.net.ssl.TrustManagerFactory;
 import org.sonatype.goodies.common.ComponentSupport;
 import org.sonatype.nexus.crypto.CryptoHelper;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jcajce.provider.BouncyCastleFipsProvider;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -57,14 +57,14 @@ public class CryptoHelperImpl
   }
 
   /**
-   * Configures the {@link BouncyCastleProvider} if its has not already been added.
+   * Configures the {@link BouncyCastleFipsProvider} if it has not already been added.
    *
-   * @return The {@link BouncyCastleProvider} instance.
+   * @return The {@link BouncyCastleFipsProvider} instance.
    */
   public static Provider configureProvider() {
-    Provider provider = Security.getProvider(BouncyCastleProvider.PROVIDER_NAME);
+    Provider provider = Security.getProvider(BouncyCastleFipsProvider.PROVIDER_NAME);
     if (provider == null) {
-      provider = new BouncyCastleProvider();
+      provider = new BouncyCastleFipsProvider();
       Security.addProvider(provider);
     }
     return provider;

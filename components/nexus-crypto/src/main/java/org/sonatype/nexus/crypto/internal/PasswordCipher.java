@@ -26,7 +26,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.sonatype.nexus.crypto.CryptoHelper;
 
 import com.google.common.base.Throwables;
-import org.bouncycastle.util.encoders.Base64Encoder;
+import java.util.Base64;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -52,13 +52,10 @@ public class PasswordCipher
 
   private final CryptoHelper cryptoHelper;
 
-  private final Base64Encoder base64Encoder;
-
   private final SecureRandom secureRandom;
 
   public PasswordCipher(final CryptoHelper cryptoHelper) {
     this.cryptoHelper = checkNotNull(cryptoHelper);
-    this.base64Encoder = new Base64Encoder();
     this.secureRandom = cryptoHelper.createSecureRandom();
     this.secureRandom.setSeed(System.nanoTime());
   }
@@ -79,9 +76,7 @@ public class PasswordCipher
       System.arraycopy(salt, 0, allEncryptedBytes, 0, SALT_SIZE);
       allEncryptedBytes[SALT_SIZE] = padLen;
       System.arraycopy(encryptedBytes, 0, allEncryptedBytes, SALT_SIZE + 1, len);
-      ByteArrayOutputStream bout = new ByteArrayOutputStream(allEncryptedBytes.length * 2);
-      base64Encoder.encode(allEncryptedBytes, 0, allEncryptedBytes.length, bout);
-      return bout.toByteArray();
+      return Base64.getEncoder().encode(allEncryptedBytes);
     }
     catch (Exception e) {
       Throwables.throwIfUnchecked(e);
@@ -93,9 +88,7 @@ public class PasswordCipher
     checkNotNull(payload);
     checkNotNull(passPhrase);
     try {
-      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-      base64Encoder.decode(payload, 0, payload.length, baos);
-      byte[] allEncryptedBytes = baos.toByteArray();
+      byte[] allEncryptedBytes = Base64.getDecoder().decode(payload);
       int totalLen = allEncryptedBytes.length;
       byte[] salt = new byte[SALT_SIZE];
       System.arraycopy(allEncryptedBytes, 0, salt, 0, SALT_SIZE);

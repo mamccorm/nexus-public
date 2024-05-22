@@ -28,7 +28,9 @@
   <packaging>pom</packaging>
 
   <properties>
-    <bouncycastle.version>1.75</bouncycastle.version>
+    <bcfips.version>1.0.2.4</bcfips.version>
+    <bcpkix.version>1.0.7</bcpkix.version>
+    <bctls.version>1.0.18</bctls.version>
     <apache-shiro.version>1.13.0</apache-shiro.version>
     <java-jwt.version>3.16.0</java-jwt.version>
   </properties>
@@ -48,26 +50,20 @@
 
       <dependency>
         <groupId>org.bouncycastle</groupId>
-        <artifactId>bcprov-jdk15to18</artifactId>
-        <version>${bouncycastle.version}</version>
+        <artifactId>bc-fips</artifactId>
+        <version>${bcfips.version}</version>
       </dependency>
 
       <dependency>
         <groupId>org.bouncycastle</groupId>
-        <artifactId>bcpg-jdk15to18</artifactId>
-        <version>${bouncycastle.version}</version>
+        <artifactId>bcpkix-fips</artifactId>
+        <version>${bcpkix.version}</version>
       </dependency>
 
       <dependency>
         <groupId>org.bouncycastle</groupId>
-        <artifactId>bcpkix-jdk15to18</artifactId>
-        <version>${bouncycastle.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.bouncycastle</groupId>
-        <artifactId>bcutil-jdk15to18</artifactId>
-        <version>${bouncycastle.version}</version>
+        <artifactId>bctls-fips</artifactId>
+        <version>${bctls.version}</version>
       </dependency>
 
       <!-- shiro -->

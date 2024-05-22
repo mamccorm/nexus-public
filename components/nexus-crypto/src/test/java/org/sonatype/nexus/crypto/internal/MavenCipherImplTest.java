@@ -17,7 +17,7 @@ import java.security.Security;
 
 import org.sonatype.goodies.testsupport.TestSupport;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jcajce.provider.BouncyCastleFipsProvider;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -57,13 +57,13 @@ public class MavenCipherImplTest
 
   @Before
   public void prepare() {
-    Security.addProvider(new BouncyCastleProvider());
+    Security.addProvider(new BouncyCastleFipsProvider());
     testSubject = new MavenCipherImpl(new CryptoHelperImpl());
   }
 
   @After
   public void cleanup() {
-    Security.removeProvider(BouncyCastleProvider.PROVIDER_NAME);
+    Security.removeProvider(BouncyCastleFipsProvider.PROVIDER_NAME);
   }
 
   @Test

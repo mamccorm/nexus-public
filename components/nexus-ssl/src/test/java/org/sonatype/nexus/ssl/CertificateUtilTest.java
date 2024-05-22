@@ -17,7 +17,7 @@ import java.security.cert.Certificate;
 
 import org.sonatype.goodies.testsupport.TestSupport;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jce.provider.BouncyCastleFipsProvider;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -52,8 +52,8 @@ public class CertificateUtilTest
 
   @Before
   public void registerBouncyCastle() {
-    if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
-      Security.addProvider(new BouncyCastleProvider());
+    if (Security.getProvider(BouncyCastleFipsProvider.PROVIDER_NAME) == null) {
+      Security.addProvider(new BouncyCastleFipsProvider());
     }
   }
 

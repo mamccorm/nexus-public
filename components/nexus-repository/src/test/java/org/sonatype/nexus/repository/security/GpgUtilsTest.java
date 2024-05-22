@@ -21,7 +21,7 @@ import java.util.Iterator;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bouncycastle.bcpg.ArmoredInputStream;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jcajce.provider.BouncyCastleFipsProvider;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPObjectFactory;
 import org.bouncycastle.openpgp.PGPPublicKey;
@@ -60,7 +60,7 @@ public class GpgUtilsTest
 
   // used to fix java.security.NoSuchProviderException: no such provider: BC
   static {
-    Security.addProvider(new BouncyCastleProvider());
+    Security.addProvider(new BouncyCastleFipsProvider());
   }
 
   @Before

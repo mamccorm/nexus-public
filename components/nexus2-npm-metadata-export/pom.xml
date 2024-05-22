@@ -85,7 +85,8 @@
               These jars are located in parent directory, not the system repository
               -->
               <Class-Path>
-                ../${project.artifactMap(org.bouncycastle:bcprov-jdk15to18).file.name}
+                ../${project.artifactMap(org.bouncycastle:bc-fips).file.name}
+                ../${project.artifactMap(org.bouncycastle:bctls-fips).file.name}
                 ../boot/${project.artifactMap(org.osgi:osgi.core).file.name}
               </Class-Path>
             </manifestEntries>

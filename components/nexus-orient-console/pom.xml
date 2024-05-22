@@ -56,6 +56,23 @@
       <groupId>org.sonatype.nexus</groupId>
       <artifactId>nexus-crypto</artifactId>
     </dependency>
+    
+    <!-- Bouncy Castle FIPS dependencies -->
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bc-fips</artifactId>
+      <version>1.0.2.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-fips</artifactId>
+      <version>1.0.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bctls-fips</artifactId>
+      <version>1.0.18</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -81,7 +98,7 @@
               These jars are located in parent directory, not the system repository
               -->
               <Class-Path>
-                ../${project.artifactMap(org.bouncycastle:bcprov-jdk15to18).file.name}
+                ../${project.artifactMap(org.bouncycastle:bc-fips).file.name}
                 ../boot/${project.artifactMap(org.osgi:osgi.core).file.name}
               </Class-Path>
             </manifestEntries>
